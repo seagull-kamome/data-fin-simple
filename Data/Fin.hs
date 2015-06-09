@@ -118,11 +118,11 @@ strengthen x'@(Fin x)
 {-# INLINE strengthen #-}
 
 -- |
--- >>> shift (Proxy :: Proxy 1) (finZ :: Fin Int 10)
+-- >>> shift (Proxy :: Proxy 1) (finZ :: Fin Int 20)
 -- Fin 0
 --
--- >>> shift (Proxy :: Proxy 10) (finLast :: Fin Int 10) == (finLast :: Fin Int 10)
--- True
+-- >>> (shift (Proxy :: Proxy 10) (finLast :: Fin Int 10) :: Fin Int 20)
+-- Fin 9
 --
 shift :: (KnownNat (m + n), Integral s) => proxy m -> Fin s n -> Fin s (m + n)
 shift _ (Fin x) = unsafeToFin x
